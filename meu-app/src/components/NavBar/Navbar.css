@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacamento);
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: var(--espacamento)
+}
+
+.navbar li a {
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
