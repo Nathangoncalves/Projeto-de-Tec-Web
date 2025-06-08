@@ -1,0 +1,28 @@
+.lista-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--espacamento);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: var(--espacamento);
+}
+
+.lista-itens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    border-bottom: 1px solid #eee;
+    padding: var(--espacamento) 0;
+}
+
+.item:last-child {
+    border-bottom: none;
+}

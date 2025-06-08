@@ -5,7 +5,7 @@ import './Navbar.css';
 const Navbar = () => {
     return (
     <nav className="navbar">
-        <h1>Minha App</h1>
+        <h1>Cadastro de Usuários</h1>
         <ul>
             <li>
                 <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
