@@ -15,25 +15,25 @@ Este repositório contém uma aplicação completa de cadastro e listagem de usu
 
 ```
 Projeto-de-Tec-Web/
-├── backend/           # Servidor Express (API REST)
-│   ├── index.js       # Rotas GET /itens, POST /itens, DELETE /itens/:id
-│   ├── package.json   # Dependências e scripts do backend
+├── backend/           
+│   ├── index.js       
+│   ├── package.json   
 │   └── ...
-├── mock-api/          # (Opcional) json-server para mockar a API
-│   ├── db.json        # Armazena itens temporários
-│   ├── package.json   # json-server script
+├── mock-api/          
+│   ├── db.json        
+│   ├── package.json   
 │   └── ...
-└── meu-app/           # Frontend React
-    ├── .env.local     # Variáveis de ambiente (REACT_APP_API_BASE_URL)
+└── meu-app/           
+    ├── .env.local     
     ├── public/
     ├── src/
     │   ├── components/
-    │   ├── context/    # GlobalContext com useReducer e axios
+    │   ├── context/    
     │   ├── pages/
-    │   ├── services/   # api.js com axios
+    │   ├── services/  
     │   └── ...
     ├── package.json
-    └── README.md       # (este arquivo)
+    └── README.md       
 ```
 
 ---
@@ -53,10 +53,6 @@ Projeto-de-Tec-Web/
   * Node.js + Express para API REST
   * CORS para permissões de origem
   * Nodemon (dev) para auto-reload
-
-* **Mock-API (opcional)**
-
-  * json-server para simular endpoints sem escrever código
 
 ---
 
@@ -152,7 +148,3 @@ Abra `http://localhost:3000` no navegador.
 * Autenticação (JWT) para proteger rotas.
 * Testes automatizados (Jest + Supertest no backend, React Testing Library no front).
 * Deploy automático (GitHub Actions) e publicação em Heroku/Netlify.
-
----
-
-**Boa prática:** mantenha seu Obsidian atualizado com diagramas, fluxos e resoluções de bugs, para servir de referência em projetos futuros! 🚀
