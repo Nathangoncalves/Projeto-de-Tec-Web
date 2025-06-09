@@ -1,13 +1,20 @@
-# Prática Presencial: Aplicação React + Express
+# Prática Presencial: Aplicação React + Express com Auto-Preenchimento de Endereço
 
-Este repositório contém uma aplicação completa de cadastro e listagem de usuários, desenvolvida em **React** (frontend) e **Express** (backend). O objetivo é demonstrar as funcionalidades essenciais: navegação, formulários, integração com API, CRUD básico e deploy local.
+Este repositório contém uma aplicação full-stack de cadastro e listagem de usuários, desenvolvida em **React** (frontend) e **Express** (backend), com integração de auto-preenchimento de endereço via API do ViaCEP. O objetivo é demonstrar:
+
+- Navegação entre páginas (React Router v6)
+- Formulários controlados e validação
+- Auto-preenchimento de CEP / logradouro / cidade / estado
+- Chamadas HTTP com **axios** e **Context API**
+- API REST em **Express** com endpoints CRUD básicos
+- Deploy local e versão mock com **json-server**
 
 ---
 
 ## Integrantes
 
-* João Pedro Gurgel Tomaz Farias Fernandes — 2222130008
-* Nathan de Oliveira Gonçalves — 2312130056
+- João Pedro Gurgel Tomaz Farias Fernandes — 2222130008
+- Nathan de Oliveira Gonçalves — 2312130056
 
 ---
 
@@ -28,8 +35,10 @@ Projeto-de-Tec-Web/
     ├── public/
     ├── src/
     │   ├── components/
+    │   │   ├── FormCadastro/     
+    │   │   └── ListaItens/       
     │   ├── context/    
-    │   ├── pages/
+    │   ├── pages/      
     │   ├── services/  
     │   └── ...
     ├── package.json
@@ -40,73 +49,65 @@ Projeto-de-Tec-Web/
 
 ## Tecnologias Utilizadas
 
-* **Frontend**
+**Frontend**
+- React (Create React App)
+- Context API + useReducer para estado global
+- React Router v6 para navegação
+- Axios para chamadas HTTP
+- CSS modular para estilização e responsividade
+- Fetch para chamada pública à API do ViaCEP
 
-  * React (Create React App)
-  * Context API + useReducer para estado global
-  * React Router v6 para navegação
-  * Axios para chamadas HTTP
-  * CSS modular para estilização e responsividade
+**Backend**
+- Node.js + Express para API REST
+- CORS para permissão de origem cruzada
+- Nodemon (dev) para auto-reload
 
-* **Backend**
-
-  * Node.js + Express para API REST
-  * CORS para permissões de origem
-  * Nodemon (dev) para auto-reload
+**Mock-API (opcional)**
+- json-server para simular endpoints sem código adicional
 
 ---
 
 ## Como Executar
 
-### 1. Rodando o Mock-API (opcional)
-
-Se quiser usar um servidor fake em vez do Express:
+### 1. Mock-API (opcional)
 
 ```bash
 cd Projeto-de-Tec-Web/mock-api
-npm install          # instala json-server
-npm start            # json-server --watch db.json --port 3001
+npm install
+npm start   # json-server --watch db.json --port 3001
 ```
 
-O mock-API ficará disponível em `http://localhost:3001/itens`.
+A API mock estará em `http://localhost:3001/itens`.
 
 ---
 
-### 2. Rodando o Backend Express
+### 2. Backend Express
 
 ```bash
 cd Projeto-de-Tec-Web/backend
-npm install          # instala dependências (express, cors)
-npm run dev          # inicia com nodemon (ou npm start para produção)
+npm install
+npm run dev   # inicia com nodemon
 ```
 
-O servidor Express escutará em `http://localhost:3001` com:
-
-* `GET  /itens`       → retorna a lista de itens
-* `POST /itens`       → cria um novo item
-* `DELETE /itens/:id` → remove um item pelo ID
+O servidor Express estará em `http://localhost:3001` com:
+- `GET  /itens`
+- `POST /itens`
+- `DELETE /itens/:id`
 
 ---
 
-### 3. Configurar Variáveis de Ambiente no Frontend
+### 3. Frontend React
 
-No **meu-app/**, crie (ou abra) o arquivo `.env.local` ao lado do `package.json`:
-
-```env
-REACT_APP_API_BASE_URL=http://localhost:3001
-```
-
-Isso define a URL base que o frontend usará para todas as requisições.
-
----
-
-### 4. Rodando o Frontend React
-
-```bash
-cd Projeto-de-Tec-Web/meu-app
-npm install          # instala dependências do React
-npm start            # inicia o CRA em modo desenvolvimento
-```
+1. Em `meu-app/`, crie `.env.local`:
+   ```env
+   REACT_APP_API_BASE_URL=http://localhost:3001
+   ```
+2. Execute:
+   ```bash
+   cd Projeto-de-Tec-Web/meu-app
+   npm install
+   npm start
+   ```
 
 Abra `http://localhost:3000` no navegador.
 
@@ -114,37 +115,21 @@ Abra `http://localhost:3000` no navegador.
 
 ## Principais Funcionalidades
 
-1. **Formulário de Cadastro**
-
-   * Campos: **nome**, **email**, **telefone**
-   * Validação de campos obrigatórios e formato de email/telefone
-   * Envio via `POST /itens` e resposta exibida em tempo real
-
-2. **Listagem de Itens**
-
-   * Busca via `GET /itens`
-   * Renderização dinâmica com `.map()`
-   * Tratamento de estados: **carregando**, **erro**, **nenhum item**
-
-3. **Estado Global**
-
-   * Context API + useReducer para gerenciar lista de itens e status
-
-4. **Navegação**
-
-   * React Router v6 para alternar entre as páginas de **Cadastro** e **Listagem**
-
-5. **Estilização**
-
-   * CSS modular por componente
-   * Responsividade com media queries
+- **Formulário de Cadastro** com validação de campos
+- **Auto-Preenchimento de Endereço**: ao inserir o CEP, busca **ViaCEP** e preenche logradouro, cidade e estado
+- **Listagem Dinâmica**: exibe Nome, Email, Telefone, CEP, Logradouro, Cidade e Estado
+- **Estado Global**: Context API + useReducer para gerenciar dados e status (carregando/erro)
+- **API REST**: endpoints para criar, ler e deletar itens (CRUD)
+- **Design Responsivo** em CSS puro
 
 ---
 
-## Ideias de Melhoria
+## Próximas Melhorias
 
-* Adicionar **edição** de itens (`PUT /itens/:id`).
-* Persistir em banco de dados real (MongoDB, PostgreSQL).
-* Autenticação (JWT) para proteger rotas.
-* Testes automatizados (Jest + Supertest no backend, React Testing Library no front).
-* Deploy automático (GitHub Actions) e publicação em Heroku/Netlify.
+- Implementar **edição** de itens (`PUT /itens/:id`)
+- Persistir em banco de dados (MongoDB, PostgreSQL)
+- Autenticação JWT
+- Testes automatizados (Jest, React Testing Library, Supertest)
+- Configurar CI/CD e deploy (GitHub Actions, Heroku, Netlify)
+
+---
