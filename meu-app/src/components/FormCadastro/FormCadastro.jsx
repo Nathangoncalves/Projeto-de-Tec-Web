@@ -80,7 +80,6 @@ const FormCadastro = () => {
     <div className="container-cadastro">
       <h2>Cadastro de Usuário</h2>
       <form onSubmit={handleSubmit} noValidate>
-        {/* Campos originais */}
         <div className="campo-form">
           <label htmlFor="nome">Nome:</label>
           <input id="nome" name="nome" value={formValues.nome} onChange={handleChange} />
@@ -110,8 +109,7 @@ const FormCadastro = () => {
           />
           {erros.telefone && <span className="erro">{erros.telefone}</span>}
         </div>
-
-        {/* Campos de endereço */}
+        
         <div className="campo-form">
           <label htmlFor="cep">CEP:</label>
           <input
